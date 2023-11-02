@@ -16,16 +16,19 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="day" translatesAutoresizingMaskIntoConstraints="NO" id="hdo-h6-5Jn">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="862"/>
+                            </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="center" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="fs3-eg-94y">
                                 <rect key="frame" x="0.0" y="44" width="414" height="818"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="3uo-Kq-YN6">
                                         <rect key="frame" x="30" y="0.0" width="354" height="203"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AL6-4x-i8T">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Wed, 28 Dec 2022 14:59:00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AL6-4x-i8T">
                                                 <rect key="frame" x="0.0" y="91" width="354" height="21.5"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
-                                                <nil key="textColor"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
@@ -41,22 +44,23 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="hrq-uS-SkX">
-                                        <rect key="frame" x="30" y="410" width="354" height="203"/>
+                                        <rect key="frame" x="80" y="410" width="254" height="203"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="soW-er-xey">
-                                                <rect key="frame" x="0.0" y="76.5" width="354" height="50"/>
+                                                <rect key="frame" x="0.0" y="80" width="254" height="43"/>
                                                 <state key="normal" title="Button"/>
                                                 <buttonConfiguration key="configuration" style="plain">
                                                     <backgroundConfiguration key="background"/>
                                                     <attributedString key="attributedTitle">
-                                                        <fragment content="Start">
+                                                        <fragment content="Start Timer">
                                                             <attributes>
                                                                 <color key="NSColor" name="textColor" catalog="System" colorSpace="catalog"/>
-                                                                <font key="NSFont" metaFont="system" size="30"/>
+                                                                <font key="NSFont" size="26" name=".SFNS-Regular"/>
                                                                 <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                                             </attributes>
                                                         </fragment>
                                                     </attributedString>
+                                                    <color key="baseForegroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </buttonConfiguration>
                                             </button>
                                         </subviews>
@@ -75,8 +79,8 @@
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="3uo-Kq-YN6" firstAttribute="leading" secondItem="fs3-eg-94y" secondAttribute="leading" constant="30" id="0Pc-vn-BeF"/>
-                                    <constraint firstItem="hrq-uS-SkX" firstAttribute="leading" secondItem="fs3-eg-94y" secondAttribute="leading" constant="30" id="NNm-NU-63I"/>
-                                    <constraint firstAttribute="trailing" secondItem="hrq-uS-SkX" secondAttribute="trailing" constant="30" id="OCv-n9-6BF"/>
+                                    <constraint firstItem="hrq-uS-SkX" firstAttribute="leading" secondItem="fs3-eg-94y" secondAttribute="leading" constant="80" id="NNm-NU-63I"/>
+                                    <constraint firstAttribute="trailing" secondItem="hrq-uS-SkX" secondAttribute="trailing" constant="80" id="OCv-n9-6BF"/>
                                     <constraint firstItem="r8Z-Lh-6Ao" firstAttribute="leading" secondItem="fs3-eg-94y" secondAttribute="leading" constant="30" id="RJd-k8-NiE"/>
                                     <constraint firstItem="pO3-HO-liK" firstAttribute="leading" secondItem="fs3-eg-94y" secondAttribute="leading" constant="70" id="YG0-nq-UVs"/>
                                     <constraint firstAttribute="trailing" secondItem="3uo-Kq-YN6" secondAttribute="trailing" constant="30" id="Zp2-1R-KH0"/>
@@ -88,23 +92,30 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="hdo-h6-5Jn" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="1AP-nS-7P0" userLabel="day.top = top"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="fs3-eg-94y" secondAttribute="bottom" id="2qx-Tz-40a"/>
                             <constraint firstItem="fs3-eg-94y" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="Byr-or-fli"/>
+                            <constraint firstItem="hdo-h6-5Jn" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="dDz-I3-iYe"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="hdo-h6-5Jn" secondAttribute="bottom" id="kTx-az-Vtz"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="fs3-eg-94y" secondAttribute="trailing" id="kYz-M8-exg"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="hdo-h6-5Jn" secondAttribute="trailing" id="nEN-IM-K1o"/>
                             <constraint firstItem="fs3-eg-94y" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="uol-Jo-9sZ"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="amPmImage" destination="hdo-h6-5Jn" id="smS-8f-84j"/>
                         <outlet property="liveClockLabel" destination="AL6-4x-i8T" id="g99-PM-1je"/>
+                        <outlet property="startButton" destination="soW-er-xey" id="KcC-MT-Xly"/>
                         <outlet property="timePicker" destination="VmI-I8-5ZF" id="Iei-v8-6kb"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="37.681159420289859" y="40.848214285714285"/>
+            <point key="canvasLocation" x="-104" y="52"/>
         </scene>
     </scenes>
     <resources>
+        <image name="day" width="3197.5" height="2133"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
