@@ -56,6 +56,7 @@ class ViewController: UIViewController {
     }
     
 
+    // button click event handler
     @IBAction func startStopTapped(_ sender: UIButton) {
         if countDownTimer == nil {
             let selectedTime = timePicker.date
@@ -71,6 +72,7 @@ class ViewController: UIViewController {
         }
     }
     
+    // function to update time remaining label every second
     @objc func updateCountdown() {
         if totalRemainingSeconds > 0 {
             totalRemainingSeconds -= 1
@@ -85,6 +87,7 @@ class ViewController: UIViewController {
         }
     }
 
+    // function to stop the count down
     func stopCountdown() {
         countDownTimer?.invalidate()
         countDownTimer = nil
