@@ -10,9 +10,16 @@ import UIKit
 class ViewController: UIViewController {
 
     var timer1: Timer?
+    
+    var countDownTimer: Timer?
+    var totalRemainingSeconds: Int = 0
+    
     var currentDate: Date {
         return Date()
     }
+    
+    var timerRunning:Bool = false
+    
     let dateFormatter: DateFormatter = {
         let formatter = DateFormatter()
         formatter.dateFormat = "EEE, dd MMM yyyy HH:mm:ss"
@@ -21,8 +28,12 @@ class ViewController: UIViewController {
     @IBOutlet weak var liveClockLabel: UILabel!
     
     @IBOutlet weak var startButton: UIButton!
+    
     @IBOutlet weak var amPmImage: UIImageView!
+    
     @IBOutlet weak var timePicker: UIDatePicker!
+    
+    @IBOutlet weak var remainTimeLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,7 +44,7 @@ class ViewController: UIViewController {
         startClock()
         
         //time picker element backgroundcolor to black and
-        //change the letters to white
+        //change the letters to white for better visibility
         timePicker.backgroundColor = .black
         if #available(iOS 14.0, *) {
             // For iOS 14 and later
@@ -44,6 +55,42 @@ class ViewController: UIViewController {
         }
     }
     
+
+    @IBAction func startStopTapped(_ sender: UIButton) {
+        if countDownTimer == nil {
+            let selectedTime = timePicker.date
+            let calendar = Calendar.current
+            totalRemainingSeconds = calendar.component(.hour, from: selectedTime) * 3600
+            + calendar.component(.minute, from: selectedTime) * 60
+            + calendar.component(.second, from: selectedTime)
+
+            countDownTimer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(updateCountdown), userInfo: nil, repeats: true)
+            startButton.setTitle("Stop Timer", for: .normal)
+        } else {
+            stopCountdown()
+        }
+    }
+    
+    @objc func updateCountdown() {
+        if totalRemainingSeconds > 0 {
+            totalRemainingSeconds -= 1
+
+            let hours = totalRemainingSeconds / 3600
+            let minutes = (totalRemainingSeconds % 3600) / 60
+            let seconds = totalRemainingSeconds % 60
+            remainTimeLabel.text = String(format: "Time Remaining: %02d:%02d:%02d", hours, minutes, seconds)
+        } else {
+            stopCountdown()
+            startButton.setTitle("Start Timer", for: .normal)
+        }
+    }
+
+    func stopCountdown() {
+        countDownTimer?.invalidate()
+        countDownTimer = nil
+        startButton.setTitle("Start Timer", for: .normal)
+    }
+
     /* start the live clock */
     func startClock() {
         timer1 = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { _ in
@@ -57,5 +104,7 @@ class ViewController: UIViewController {
             self.liveClockLabel.text = self.dateFormatter.string(from: self.currentDate)
         }
     }
+    
+
 }
 

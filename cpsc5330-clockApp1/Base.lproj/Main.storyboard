@@ -47,7 +47,7 @@
                                         <rect key="frame" x="80" y="410" width="254" height="203"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="soW-er-xey">
-                                                <rect key="frame" x="0.0" y="80" width="254" height="43"/>
+                                                <rect key="frame" x="0.0" y="79" width="254" height="45.5"/>
                                                 <state key="normal" title="Button"/>
                                                 <buttonConfiguration key="configuration" style="plain">
                                                     <backgroundConfiguration key="background"/>
@@ -55,22 +55,25 @@
                                                         <fragment content="Start Timer">
                                                             <attributes>
                                                                 <color key="NSColor" name="textColor" catalog="System" colorSpace="catalog"/>
-                                                                <font key="NSFont" size="26" name=".SFNS-Regular"/>
+                                                                <font key="NSFont" metaFont="system" size="26"/>
                                                                 <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                                             </attributes>
                                                         </fragment>
                                                     </attributedString>
                                                     <color key="baseForegroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </buttonConfiguration>
+                                                <connections>
+                                                    <action selector="startStopTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="0oE-z2-mxZ"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="r8Z-Lh-6Ao">
                                         <rect key="frame" x="30" y="615" width="354" height="203"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Remaining Time:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n4k-49-2Sd">
-                                                <rect key="frame" x="0.0" y="89.5" width="354" height="24"/>
-                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Time Remaining: 00:10:15" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n4k-49-2Sd">
+                                                <rect key="frame" x="0.0" y="91" width="354" height="21.5"/>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
@@ -105,6 +108,7 @@
                     <connections>
                         <outlet property="amPmImage" destination="hdo-h6-5Jn" id="smS-8f-84j"/>
                         <outlet property="liveClockLabel" destination="AL6-4x-i8T" id="g99-PM-1je"/>
+                        <outlet property="remainTimeLabel" destination="n4k-49-2Sd" id="IQ8-Kb-9g0"/>
                         <outlet property="startButton" destination="soW-er-xey" id="KcC-MT-Xly"/>
                         <outlet property="timePicker" destination="VmI-I8-5ZF" id="Iei-v8-6kb"/>
                     </connections>
