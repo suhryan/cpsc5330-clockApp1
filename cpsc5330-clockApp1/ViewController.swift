@@ -72,7 +72,7 @@ class ViewController: UIViewController {
         }
     }
     
-    // function to update time remaining label every second
+    // function to update time remaining label every second.
     @objc func updateCountdown() {
         if totalRemainingSeconds > 0 {
             totalRemainingSeconds -= 1
