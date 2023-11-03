@@ -17,7 +17,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="day" translatesAutoresizingMaskIntoConstraints="NO" id="hdo-h6-5Jn">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="862"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="center" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="fs3-eg-94y">
                                 <rect key="frame" x="0.0" y="44" width="414" height="818"/>
@@ -95,14 +95,15 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="hdo-h6-5Jn" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="1AP-nS-7P0" userLabel="day.top = top"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="fs3-eg-94y" secondAttribute="bottom" id="2qx-Tz-40a"/>
+                            <constraint firstAttribute="trailing" secondItem="hdo-h6-5Jn" secondAttribute="trailing" id="8Bc-zN-J1p"/>
+                            <constraint firstItem="hdo-h6-5Jn" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="8hI-CU-hmO"/>
                             <constraint firstItem="fs3-eg-94y" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="Byr-or-fli"/>
-                            <constraint firstItem="hdo-h6-5Jn" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="dDz-I3-iYe"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="hdo-h6-5Jn" secondAttribute="bottom" id="kTx-az-Vtz"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="fs3-eg-94y" secondAttribute="trailing" id="kYz-M8-exg"/>
+                            <constraint firstItem="hdo-h6-5Jn" firstAttribute="bottom" secondItem="8bC-Xf-vdC" secondAttribute="bottom" id="mOC-10-Tap"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="hdo-h6-5Jn" secondAttribute="trailing" id="nEN-IM-K1o"/>
                             <constraint firstItem="fs3-eg-94y" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="uol-Jo-9sZ"/>
+                            <constraint firstItem="hdo-h6-5Jn" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="xJl-sO-S6M"/>
                         </constraints>
                     </view>
                     <connections>
@@ -115,7 +116,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-104" y="52"/>
+            <point key="canvasLocation" x="-1958" y="-784"/>
         </scene>
     </scenes>
     <resources>
