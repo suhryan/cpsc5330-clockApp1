@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5C2274712AF6A11D003ED62A /* der-kleber-sting.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 5C2274702AF6A11D003ED62A /* der-kleber-sting.mp3 */; };
 		5CA6AA912AF181A9007C3CFB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CA6AA902AF181A9007C3CFB /* AppDelegate.swift */; };
 		5CA6AA932AF181A9007C3CFB /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CA6AA922AF181A9007C3CFB /* SceneDelegate.swift */; };
 		5CA6AA952AF181A9007C3CFB /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CA6AA942AF181A9007C3CFB /* ViewController.swift */; };
@@ -16,6 +17,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5C2274702AF6A11D003ED62A /* der-kleber-sting.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "der-kleber-sting.mp3"; sourceTree = "<group>"; };
 		5CA6AA8D2AF181A9007C3CFB /* cpsc5330-clockApp1.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "cpsc5330-clockApp1.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5CA6AA902AF181A9007C3CFB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5CA6AA922AF181A9007C3CFB /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -56,6 +58,7 @@
 		5CA6AA8F2AF181A9007C3CFB /* cpsc5330-clockApp1 */ = {
 			isa = PBXGroup;
 			children = (
+				5C2274702AF6A11D003ED62A /* der-kleber-sting.mp3 */,
 				5CA6AA902AF181A9007C3CFB /* AppDelegate.swift */,
 				5CA6AA922AF181A9007C3CFB /* SceneDelegate.swift */,
 				5CA6AA942AF181A9007C3CFB /* ViewController.swift */,
@@ -126,6 +129,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5CA6AA9D2AF181AD007C3CFB /* LaunchScreen.storyboard in Resources */,
+				5C2274712AF6A11D003ED62A /* der-kleber-sting.mp3 in Resources */,
 				5CA6AA9A2AF181AD007C3CFB /* Assets.xcassets in Resources */,
 				5CA6AA982AF181A9007C3CFB /* Main.storyboard in Resources */,
 			);

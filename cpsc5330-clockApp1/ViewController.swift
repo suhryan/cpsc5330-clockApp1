@@ -6,12 +6,16 @@
 //
 
 import UIKit
+import AVFoundation // for mp3 audio play
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, AVAudioPlayerDelegate {
 
     var timer1: Timer?
     
+    // timer for counting down time
     var countDownTimer: Timer?
+    
+    // total remaining count down time
     var totalRemainingSeconds: Int = 0
     
     var currentDate: Date {
@@ -19,12 +23,17 @@ class ViewController: UIViewController {
     }
     
     var timerRunning:Bool = false
+    var musicPlaying:Bool = false
+    
+    var audioPlayer: AVAudioPlayer?
     
     let dateFormatter: DateFormatter = {
         let formatter = DateFormatter()
         formatter.dateFormat = "EEE, dd MMM yyyy HH:mm:ss"
+        formatter.timeZone = TimeZone(identifier: "America/Chicago")
         return formatter
     }()
+    
     @IBOutlet weak var liveClockLabel: UILabel!
     
     @IBOutlet weak var startButton: UIButton!
@@ -37,10 +46,14 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // put black border for the button
+        
+        setupAudioPlayer()
+        
+        // put black border for the start timer button
         startButton.layer.borderColor = UIColor.black.cgColor
         startButton.layer.borderWidth = 1.0
 
+        //start the live clock
         startClock()
         
         //time picker element backgroundcolor to black and
@@ -54,13 +67,47 @@ class ViewController: UIViewController {
             timePicker.setValue(UIColor.white, forKey: "textColor")
         }
     }
-    
 
-    // button click event handler
+    func audioPlayerDidFinishPlaying(_ player: AVAudioPlayer, successfully flag: Bool) {
+        if flag {
+            // Perform additional actions if needed, like updating the UI
+            startButton.setTitle("Start Timer", for: .normal)
+            
+            // stop and reset audio play
+            audioPlayer?.stop()
+            // Rewind the audio to the beginning
+            audioPlayer?.currentTime = 0
+            
+            // reset timer
+            stopCountdown()
+
+        }
+    }
+
+    // setup audio player to play
+    func setupAudioPlayer() {
+        guard let audioUrl = Bundle.main.url(forResource: "der-kleber-sting", withExtension: "mp3")
+        else {
+            print("Unable to find the audio file")
+            return
+        }
+
+        do {
+            audioPlayer = try AVAudioPlayer(contentsOf: audioUrl)
+            audioPlayer?.delegate = self  // Set the delegate
+            audioPlayer?.prepareToPlay()
+        } catch {
+            print("There was an error loading the audio file: \(error)")
+        }
+    }
+
+
+    // start timer button click event handler
     @IBAction func startStopTapped(_ sender: UIButton) {
         if countDownTimer == nil {
             let selectedTime = timePicker.date
             let calendar = Calendar.current
+            
             totalRemainingSeconds = calendar.component(.hour, from: selectedTime) * 3600
             + calendar.component(.minute, from: selectedTime) * 60
             + calendar.component(.second, from: selectedTime)
@@ -68,6 +115,20 @@ class ViewController: UIViewController {
             countDownTimer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(updateCountdown), userInfo: nil, repeats: true)
             startButton.setTitle("Stop Timer", for: .normal)
         } else {
+            //stop count down if 'stop timer' pressed again
+            stopCountdown()
+        }
+        
+        // if music is playing then stop the music and
+        // reset music playing and total remaining time to  0 and
+        // call stopCountdown() to reset button title and timer
+        if (musicPlaying == true) {
+            audioPlayer?.stop()
+            // Rewind the audio to the beginning
+            audioPlayer?.currentTime = 0
+            
+            musicPlaying = false
+            totalRemainingSeconds = 0
             stopCountdown()
         }
     }
@@ -81,29 +142,39 @@ class ViewController: UIViewController {
             let minutes = (totalRemainingSeconds % 3600) / 60
             let seconds = totalRemainingSeconds % 60
             remainTimeLabel.text = String(format: "Time Remaining: %02d:%02d:%02d", hours, minutes, seconds)
-        } else {
+        } else { //time ran out
             stopCountdown()
-            startButton.setTitle("Start Timer", for: .normal)
+            
+            // since time ran out, change button title and play
+            // music
+            startButton.setTitle("Stop Music", for: .normal)
+            audioPlayer?.play() //play the audio on countdown stop
+            musicPlaying = true
         }
     }
 
     // function to stop the count down
     func stopCountdown() {
+        startButton.setTitle("Start Timer", for: .normal)
+        startButton.isEnabled = true
+        
         countDownTimer?.invalidate()
         countDownTimer = nil
-        startButton.setTitle("Start Timer", for: .normal)
     }
 
     /* start the live clock */
     func startClock() {
         timer1 = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { _ in
             let currentHour = Calendar.current.component(.hour, from: self.currentDate)
-            if currentHour < 12 {
+            if currentHour < 12 { // set daytime image
                 //self.view.backgroundColor = .systemBackground // set AM color
                 self.amPmImage.image = UIImage(named: "day.jpg")
-            } else {
+            } else { // set night time image
                 //self.view.backgroundColor = UIColor.gray // set PM color
-                self.amPmImage.image = UIImage(named: "night.jpg")            }
+                self.amPmImage.image = UIImage(named: "night.jpg")
+                
+            }
+            
             self.liveClockLabel.text = self.dateFormatter.string(from: self.currentDate)
         }
     }
