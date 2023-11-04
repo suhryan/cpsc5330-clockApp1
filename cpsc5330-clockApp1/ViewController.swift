@@ -80,7 +80,6 @@ class ViewController: UIViewController, AVAudioPlayerDelegate {
             
             // reset timer
             stopCountdown()
-
         }
     }
 
